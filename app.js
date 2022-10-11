@@ -28,3 +28,23 @@ function updateScore(player, opp) {
 	}
 }
 
+player1.button.addEventListener('click', () => updateScore(player1, player2))
+player2.button.addEventListener('click', () => updateScore(player2, player1))
+
+playToSelect.addEventListener('change', () => {
+	playTo = parseInt(playToSelect.value)
+	console.log(playTo)
+	reset()
+})
+
+resetBtn.addEventListener('click', reset)
+
+function reset() {
+	gameOver = false
+	for (let player of [player1, player2]) {
+		player.score = 0
+		player.display.textContent = '0'
+		player.button.disabled = false
+		player.display.classList.remove('has-text-success', 'has-text-danger')
+	}
+}
