@@ -14,3 +14,17 @@ const playToSelect = document.getElementById("playto")
 let playTo = 3
 let gameOver = false
 
+function updateScore(player, opp) {
+	if(!gameOver) {
+		player.score += 1
+		if(player.score === playTo) {
+			gameOver = true
+			player.display.classList.add('has-text-success')
+			opp.display.classList.add('has-text-danger')
+			player.button.disabled = true
+			opp.button.disabled = true
+		}
+		player.display.textContent = player.score
+	}
+}
+
